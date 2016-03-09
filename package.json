@@ -1,0 +1,31 @@
+{
+  "name": "generator-docbase",
+  "version": "0.0.3",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "appbaseio/generator-docbase",
+  "author": {
+    "name": "Mateus Freira dos Santos",
+    "email": "mateus.freira@gmail.com",
+    "url": "https://github.com/appbaseio"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "lodash": "^3.10.1",
+    "yeoman-generator": "^0.19.0",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
