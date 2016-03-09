@@ -1,10 +1,10 @@
 {
-  "name": "generator-docbase",
-  "version": "0.0.3",
+  "name": "generator-appbasedocbase",
+  "version": "0.0.1",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "appbaseio/generator-docbase",
+  "repository": "appbaseio/docbase-generator",
   "author": {
     "name": "Mateus Freira dos Santos",
     "email": "mateus.freira@gmail.com",

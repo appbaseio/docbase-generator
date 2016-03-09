@@ -149,6 +149,9 @@ module.exports = yeoman.generators.Base.extend({
       var opions = _.assign(defaultOptions, this.props);
       opions.generateSearchIndex = true;
       opions.generateHtml = opions.mode === 'HTML';
+      
+      console.log(opions);
+
       var self = this;
       var templateData = opions;
       files.forEach(function(file) {
