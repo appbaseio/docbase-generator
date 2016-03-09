@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var _ = require('lodash');
+var options = {};
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
     var done = this.async();
@@ -146,14 +147,14 @@ module.exports = yeoman.generators.Base.extend({
         githubRepo: "",
         githubBranch: "",
       };
-      var opions = _.assign(defaultOptions, this.props);
-      opions.generateSearchIndex = true;
-      opions.generateHtml = opions.mode === 'HTML';
+      options = _.assign(defaultOptions, this.props);
+      options.generateSearchIndex = true;
+      options.generateHtml = options.mode === 'HTML';
       
-      console.log(opions);
+      console.log(options);
 
       var self = this;
-      var templateData = opions;
+      var templateData = options;
       files.forEach(function(file) {
         self.fs.copyTpl(
           self.templatePath(file.template),
@@ -172,6 +173,12 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function() {
-    this.installDependencies();
+    this.installDependencies({
+      skipInstall: this.options['skip-install'],
+      callback: function () {
+        if(options.mode === 'HTML')
+          this.spawnCommand('grunt');
+      }.bind(this)
+    });
   }
 });
