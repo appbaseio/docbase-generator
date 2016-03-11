@@ -15,7 +15,9 @@ var docbaseConfig = {
     "user": "<%= githubUser %>",
     "repo": "<%= githubRepo %>",
     "path": "<%= githubPath %>",
-    "branch": "<%= githubBranch %>"
+    "branch": "<%= githubBranch %>",
+    "client_id": "<%= githubClient_id %>",
+    "client_secret": "<%= githubClient_secret %>"
   },
   "indexHtml": "html/main.html",
   "flatdocHtml": "../bower_components/docbase/html/flatdoc.html",

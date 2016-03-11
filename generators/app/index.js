@@ -48,6 +48,15 @@ module.exports = yeoman.generators.Base.extend({
         name: 'githubBranch',
         message: 'What is the branch to access the documents',
         "default": "master"
+      }, {
+        type: 'input',
+        name: 'githubClient_id',
+        message: 'What is github client id'
+      }, {
+        type: 'input',
+        name: 'githubClient_secret',
+        message: 'What is github secret key',
+        "default": "master"
       }]
     };
     var geralPrompts = [{
@@ -146,6 +155,8 @@ module.exports = yeoman.generators.Base.extend({
         githubPath: "",
         githubRepo: "",
         githubBranch: "",
+        githubClient_id: "",
+        githubClient_secret: "",
       };
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
