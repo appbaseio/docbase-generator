@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					checkLoadedSelector : '#navbar-collapse',
 					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json'); })</script></html>"
 				}
-			}
+			},
 			spa: {
 				options: {
 					onlysearchIndex: true,

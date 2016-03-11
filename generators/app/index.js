@@ -178,6 +178,8 @@ module.exports = yeoman.generators.Base.extend({
       callback: function () {
         if(options.mode === 'HTML')
           this.spawnCommand('grunt');
+        else
+          this.spawnCommand('grunt',['spa']);
       }.bind(this)
     });
   }
