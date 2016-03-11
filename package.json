@@ -1,6 +1,6 @@
 {
-  "name": "generator-appbasedocbase",
-  "version": "0.0.1",
+  "name": "generator-docbase",
+  "version": "0.0.4",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
