@@ -46,11 +46,11 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'githubPath',
-        message: 'Enter the relative path to the .md docs within the repository (e.g.: src/docs)'
+        message: 'Enter the relative path to the .md docs within the repository (e.g.: src)'
       }, {
         type: 'input',
         name: 'githubClient_id',
-        message: '[Optional] Create a github app and provide it\'s client id (this allows docbase to access github APIs with no throttling)'
+        message: '[Optional] Create a github app and provide it\'s client id (this allows docbase to access github APIs with no rate limiting)'
       }, {
         type: 'input',
         name: 'githubClient_secret',
