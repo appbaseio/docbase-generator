@@ -55,8 +55,7 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'githubClient_secret',
-        message: 'What is github secret key',
-        "default": "master"
+        message: 'What is github secret key'
       }]
     };
     var geralPrompts = [{
@@ -146,6 +145,10 @@ module.exports = yeoman.generators.Base.extend({
         {
           'template': 'images/_docbase.png',
           'name': 'images/docbase.png'
+        },
+        {
+          'template': '_getGitMap.html',
+          'name': 'getGitMap.html'
         }
       ];
       var defaultOptions = {
