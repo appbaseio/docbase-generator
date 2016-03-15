@@ -16,7 +16,7 @@ npm install -g generator-docbase
 Finally, initiate the generator:
 
 ```bash
-yo generator docbase
+yo docbase
 ```
 If you'd like to get to know more about the tools used for this generator please take a look to
 
