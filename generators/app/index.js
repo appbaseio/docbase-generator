@@ -75,9 +75,9 @@ module.exports = yeoman.generators.Base.extend({
         name: "hostType",
         default: 'file',
         required: false,
-        message: "Pick a location for your .md files",
+        message: "Choose a location for your .md files",
         choices: [{
-          name: 'filesystem (default templates)',
+          name: 'Filesystem (default templates)',
           value: 'file'
         },  {
           name: 'Github',
