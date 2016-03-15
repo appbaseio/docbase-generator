@@ -41,8 +41,8 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'githubBranch',
-        message: 'Enter the branch name for this repository",
-        "default": "master"
+        message: 'Enter the branch name for this repository',
+        default: 'master'
       }, {
         type: 'input',
         name: 'githubPath',
