@@ -17,57 +17,56 @@ module.exports = yeoman.generators.Base.extend({
       generic: [{
         type: 'input',
         name: 'baseUrl',
-        message: 'What is your baseUrl',
+        message: 'Enter the root URL'
       }, {
         type: 'input',
         name: 'basePath',
-        message: 'What is your basePath',
-        default: 'docs',
+        message: 'Enter the relative path from root URL'
       }],
       file: [{
         type: 'input',
         name: 'basePath',
-        message: 'What is your basePath',
+        message: 'Enter the relative path from this directory where you will be adding the .md files',
         default: 'docs',
         required: false
       }],
       github: [{
         type: 'input',
         name: 'githubUser',
-        message: 'What is the github User'
+        message: 'Enter your github user or organization (e.g.: mojombo)'
       }, {
         type: 'input',
         name: 'githubRepo',
-        message: 'What is the documents repository'
-      }, {
-        type: 'input',
-        name: 'githubPath',
-        message: 'What is the path to the documents in the repository'
+        message: 'Enter your github repository name (e.g.: Docs)'
       }, {
         type: 'input',
         name: 'githubBranch',
-        message: 'What is the branch to access the documents',
+        message: 'Enter the branch name for this repository",
         "default": "master"
       }, {
         type: 'input',
+        name: 'githubPath',
+        message: 'Enter the relative path to the .md docs within the repository (e.g.: src/docs)'
+      }, {
+        type: 'input',
         name: 'githubClient_id',
-        message: 'What is github client id'
+        message: '[Optional] Create a github app and provide it\'s client id (this allows docbase to access github APIs with no throttling)'
       }, {
         type: 'input',
         name: 'githubClient_secret',
-        message: 'What is github secret key'
+        message: '[Optional] Provide your app's secret key'
       }]
     };
     var geralPrompts = [{
         type: 'list',
         name: 'mode',
-        message: 'Choose a execution mode',
+        message: 'Choose an execution mode',
         default: 'SPA',
         choices: [{
           name: 'HTML',
           value: "HTML"
         }, {
-          name: 'Single-page application',
+          name: 'Single Page App (SPA)',
           value: 'SPA'
         }]
       }, //prompt user to answer questions
@@ -76,16 +75,16 @@ module.exports = yeoman.generators.Base.extend({
         name: "hostType",
         default: 'file',
         required: false,
-        message: "Choose how can we acessos your document",
+        message: "Pick a location for your .md files",
         choices: [{
-          name: 'Local file',
+          name: 'filesystem (default templates)',
           value: 'file'
-        }, {
-          name: 'External URl',
-          value: 'generic'
-        }, {
+        },  {
           name: 'Github',
           value: 'github'
+        }, {
+          name: 'External URL (bitbucket, your server, etc.)',
+          value: 'generic'
         }]
       }
     ];
