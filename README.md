@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-Fisrt you need to install `node`, 'npm', `yo`, `grunt-cli`, `bower`
+Fisrt you need to install `node`, `npm`, `yo`, `grunt-cli`, `bower`
 
 Them you can install generator-docbase from npm, run:
 
