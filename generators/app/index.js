@@ -54,7 +54,7 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'githubClient_secret',
-        message: '[Optional] Provide your app's secret key'
+        message: '[Optional] Provide your app\'s secret key'
       }]
     };
     var geralPrompts = [{
