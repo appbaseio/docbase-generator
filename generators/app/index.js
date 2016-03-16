@@ -55,6 +55,10 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'githubClient_secret',
         message: '[Optional] Provide your app\'s secret key'
+      }, {
+        type: 'input',
+        name: 'githubAccess_token',
+        message: '[Optional] Provide your personal access token'
       }]
     };
     var geralPrompts = [{
@@ -159,6 +163,7 @@ module.exports = yeoman.generators.Base.extend({
         githubBranch: "",
         githubClient_id: "",
         githubClient_secret: "",
+        githubAccess_token: ""
       };
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
