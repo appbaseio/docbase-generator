@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 					generateHtml : <%= generateHtml %>,
 					baseUrl: "./",
 					urlToAccess: "http://localhost:9001/",
-					assets: ['bower_components', 'styles', 'images'],
+					assets: ['bower_components', 'styles', 'images', 'docbase-config.js'],
 					checkLoadedSelector : '#navbar-collapse',
 					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json'); })</script></html>"
 				}
