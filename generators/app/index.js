@@ -49,14 +49,6 @@ module.exports = yeoman.generators.Base.extend({
         message: 'Enter the relative path to the .md docs within the repository (e.g.: src)'
       }, {
         type: 'input',
-        name: 'githubClient_id',
-        message: '[Optional] Create a github app and provide it\'s client id (this allows docbase to access github APIs with no rate limiting)'
-      }, {
-        type: 'input',
-        name: 'githubClient_secret',
-        message: '[Optional] Provide your app\'s secret key'
-      }, {
-        type: 'input',
         name: 'githubAccess_token',
         message: '[Optional] Provide your personal access token'
       }]
@@ -161,8 +153,6 @@ module.exports = yeoman.generators.Base.extend({
         githubPath: "",
         githubRepo: "",
         githubBranch: "",
-        githubClient_id: "",
-        githubClient_secret: "",
         githubAccess_token: ""
       };
       options = _.assign(defaultOptions, this.props);

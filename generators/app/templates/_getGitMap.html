@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <div ng-repeat="currentVersion in versions">
         <li class="dropdown" ng-repeat="folder in map[currentVersion]">
-          <a ng-href="#/{{currentVersion}}/{{folder.name}}"
+          <a 
              class="dropdown-toggle"
              data-toggle="dropdown"
              role="button"
@@ -46,8 +46,8 @@
 
       var baseurl = 'https://api.github.com/repos/' + options.user + '/' + options.repo + '/';   
       var url = baseurl + 'contents?ref='+options.branch;
-      if (options.client_id && options.client_secret) {
-        url += '&client_id=' + options.client_id + '&client_secret=' + options.client_secret;
+      if (options.access_token) {
+        url += '&access_token=' + options.access_token;
       }
     
       $.get(url, {
@@ -61,8 +61,9 @@
         if (commitData[0]) {
           var sha = commitData[0].sha;
           var treeUrl = baseurl + 'git/trees/' + sha + '?recursive=1';
-          if (options.client_id && options.client_secret) {
-            treeUrl += '&client_id=' + options.client_id + '&client_secret=' + options.client_secret;
+          
+          if (options.access_token) {
+            treeUrl += '&access_token=' + options.access_token;
           }
 
           $.get(treeUrl)
