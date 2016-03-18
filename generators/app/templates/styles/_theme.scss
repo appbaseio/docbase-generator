@@ -6,7 +6,7 @@ $theme-color: <%= primaryColor %>;
 .index-container li a, .menu a, .menu a:visited, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a {
 	color: $theme-color;
 }
-a:active, a:hover{
+a:active, a:hover, .menu a:hover{
 	color: darken($theme-color, 10%);	
 }
  .tt-menu:before {
