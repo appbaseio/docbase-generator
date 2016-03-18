@@ -49,18 +49,27 @@ module.exports = function(grunt) {
 				},
 				src: ['**']
 			}
+		},
+		sass: { 
+			dist: { 
+				files: { 
+					'styles/theme.css': 'styles/theme.scss',
+				}
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-docbase');
 	grunt.loadNpmTasks('grunt-gh-pages');
+	grunt.loadNpmTasks('grunt-contrib-sass');
+
 	// Default task.
 	
 	var target = grunt.option('target') || 'def';
 	
-	grunt.registerTask('default', ['connect', 'docbase:'+target]);
-	grunt.registerTask('publish', ['connect', 'docbase:'+target, 'gh-pages']);
-	grunt.registerTask('spa', ['connect', 'docbase:spa']);
+	grunt.registerTask('default', ['connect', 'sass', 'docbase:'+target]);
+	grunt.registerTask('publish', ['connect', 'sass', 'docbase:'+target, 'gh-pages']);
+	grunt.registerTask('spa', ['connect', 'sass', 'docbase:spa']);
 	
 };

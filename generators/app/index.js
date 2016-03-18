@@ -85,13 +85,26 @@ module.exports = yeoman.generators.Base.extend({
       }
     ];
 
+    var themePrompts = [{
+        type: 'input',
+        name: 'primaryColor',
+        message: '[Optional] Enter the primary color of your theme',
+        default: '#50BAEF',
+        required: false
+      }];
+
     this.prompt(geralPrompts, function(props) {
       this.prompt(hostTypeQuestions[props.hostType || 'file'], function(propsHostType) {
         this.props = _.assign(propsHostType, props);
         // To access props later use this.props.someOption;
-        done();
+        this.prompt(themePrompts, function(propsIn) {
+          this.props['primaryColor'] = propsIn['primaryColor'];
+          done();
+        }.bind(this));  
       }.bind(this));
+      
     }.bind(this));
+
   },
 
   writing: {
@@ -138,6 +151,10 @@ module.exports = yeoman.generators.Base.extend({
           'name': 'styles/style.css'
         },
         {
+          'template': 'styles/_theme.scss',
+          'name': 'styles/theme.scss'
+        },
+        {
           'template': 'images/_docbase.png',
           'name': 'images/docbase.png'
         },
@@ -153,7 +170,8 @@ module.exports = yeoman.generators.Base.extend({
         githubPath: "",
         githubRepo: "",
         githubBranch: "",
-        githubAccess_token: ""
+        githubAccess_token: "",
+        primaryColor: ""
       };
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
