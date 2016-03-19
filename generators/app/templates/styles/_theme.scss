@@ -3,7 +3,7 @@ $theme-color: <%= primaryColor %>;
 .landing, .button, .navbar-fixed-top {
 	background-color: $theme-color;
 }
-.index-container li a, .menu a, .menu a:visited, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a {
+.index-container li a, .menu a, .menu a:visited, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a {
 	color: $theme-color;
 }
 a:active, a:hover, .menu a:hover{
