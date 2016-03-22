@@ -18,8 +18,8 @@ var docbaseConfig = {
     "branch": "<%= githubBranch %>",
     "access_token": "<%= githubAccess_token %>"
   },
-  "indexHtml": "html/main.html",
-  "flatdocHtml": "../bower_components/docbase/html/flatdoc.html",
+  "indexHtml": "./html/main.html",
+  "flatdocHtml": "./bower_components/docbase/html/flatdoc.html",
   "html5mode": false,
   "versions" : {
     "v1": [{
