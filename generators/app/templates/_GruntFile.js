@@ -7,22 +7,24 @@ module.exports = function(grunt) {
 					generateSearchIndex : true,
 					generateHtml : <%= generateHtml %>,
 					baseUrl: "./",
+					operation: '<%= gruntOperation %>',
 					urlToAccess: "http://localhost:9001/",
 					assets: ['bower_components', 'styles', 'images', 'docbase-config.js'],
 					checkLoadedSelector : '#navbar-collapse',
-					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('/search-index.json', true); })</script></html>"
+					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('./search-index.json', true); })</script></html>"
 				}
 			},
 			spa: {
 				options: {
 					onlysearchIndex: true,
-					generatePath: "docs_html/",
+					generatePath: "spa/",
 					generateSearchIndex : true,
-					generateHtml : <%= generateHtml %>,
+					generateHtml : false,
 					baseUrl: "./",
+					operation: '<%= gruntOperation %>',
 					urlToAccess: "http://localhost:9001/",
-					assets: ['bower_components', 'styles', 'images',],
-					checkLoadedSelector : '#navbar-collapse',
+					assets: ['docs', 'html', 'index.html', 'bower_components', 'styles', 'images', 'docbase-config.js', 'search-index.json' ],
+					checkLoadedSelector : '#navbar-collapse'
 				}
 			}
 		},
@@ -38,12 +40,12 @@ module.exports = function(grunt) {
 		'gh-pages': {
 			def: {
 				options: {
-					base: 'docs_html',
+					base: '<%= baseFolder %>',
 					user: {
-						name: '',
-						email: ''
+						name: 'Travis',
+						email: '<%= publishEmail %>'
 					},
-					repo: '',
+					repo: <%= publishRepoLink %>,
 					message: 'publish gh-pages (auto)',
 					silent: false,
 				},
@@ -66,7 +68,7 @@ module.exports = function(grunt) {
 
 	// Default task.
 	
-	var target = grunt.option('target') || 'def';
+	var target = grunt.option('target') || '<%= gruntTarget %>';
 	
 	grunt.registerTask('default', ['connect', 'sass', 'docbase:'+target]);
 	grunt.registerTask('publish', ['connect', 'sass', 'docbase:'+target, 'gh-pages']);
