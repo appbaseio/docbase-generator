@@ -42,8 +42,8 @@ module.exports = function(grunt) {
 				options: {
 					base: '<%= baseFolder %>',
 					user: {
-						name: 'Travis',
-						email: '<%= publishEmail %>'
+						name: 'Docbase bot',
+						email: 'awesome@docba.se'
 					},
 					repo: <%= publishRepoLink %>,
 					message: 'publish gh-pages (auto)',

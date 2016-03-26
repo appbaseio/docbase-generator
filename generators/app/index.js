@@ -13,94 +13,18 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to ' + chalk.red('GeneratorDocbase') + ' generator!'
     ));
 
-    var hostTypeQuestions = {
-      generic: [{
-        type: 'input',
-        name: 'baseUrl',
-        message: 'Enter the root URL'
-      }, {
-        type: 'input',
-        name: 'basePath',
-        message: 'Enter the relative path from root URL'
-      }],
-      file: [{
-        type: 'input',
-        name: 'basePath',
-        message: 'Enter the relative path from this directory where you will be adding the .md files',
-        default: 'docs',
-        required: false
-      }],
-      github: [{
-        type: 'input',
-        name: 'githubUser',
-        message: 'Enter your github user or organization (e.g.: mojombo)'
-      }, {
-        type: 'input',
-        name: 'githubRepo',
-        message: 'Enter your github repository name (e.g.: Docs)'
-      }, {
-        type: 'input',
-        name: 'githubBranch',
-        message: 'Enter the branch name for this repository',
-        default: 'master'
-      }, {
-        type: 'input',
-        name: 'githubPath',
-        message: 'Enter the relative path to the .md docs within the repository (e.g.: src)'
-      }, {
-        type: 'input',
-        name: 'githubAccess_token',
-        message: '[Optional] Provide your personal access token'
-      }]
-    };
-
-    var publishTypeQuestions = {
-      github: [{
-        type: 'input',
-        name: 'publishEmail',
-        required: true,
-        message: '[publish information] Enter the email which you use with github'
-      }, {
-        type: 'input',
-        name: 'publishUsername',
-        required: true,
-        message: '[publish information] Enter the github username under which you want to publish'
-      }, {
-        type: 'input',
-        name: 'publishRepo',
-        required: true,
-        message: '[publish information] Enter the github repository name under which you want to publish'
-      }, {
-        type: 'input',
-        name: 'githubAccess_token',
-        required: true,
-        message: '[publish information] Provide github access token to build with travis and push on gh-pages'
-      }],
-      local: []
-    };
-    var geralPrompts = [{
-        type: 'input',
-        name: 'start',
-        message: 'Press Enter to start generator'
-      }, {
-        type: 'list',
-        name: 'mode',
-        message: 'Choose an execution mode',
-        default: 'SPA',
-        choices: [{
-          name: 'Single Page App (SPA)',
-          value: 'SPA'
-        }, {
-          name: 'HTML',
-          value: "HTML"
-        }]
-      }, //prompt user to answer questions
-      {
+    //1. source Question
+    var sourceQuestion = [
+    {
+      type: 'input',
+      name: 'start',
+      message: 'Press Enter to start generator'
+    }, {
         type: 'list',
         name: "hostType",
         default: 'file',
-        required: false,
-        message: "Choose a location for your .md files",
+        required: true,
+        message: "1. Choose a location for your .md files",
         choices: [{
           name: 'Filesystem (default templates)',
           value: 'file'
@@ -111,13 +35,56 @@ module.exports = yeoman.generators.Base.extend({
           name: 'External URL (bitbucket, your server, etc.)',
           value: 'generic'
         }]
-      }, //prompt user to answer questions
-      {
+      }];
+
+    var sourceSubQuestion = {
+        generic: [{
+          type: 'input',
+          name: 'baseUrl',
+          message: '1-1. Enter the root URL'
+        }, {
+          type: 'input',
+          name: 'basePath',
+          message: '1-2. Enter the relative path from root URL'
+        }],
+        file: [{
+          type: 'input',
+          name: 'basePath',
+          message: '1-1. Enter the relative path from this directory where you will be adding the .md files',
+          default: 'docs',
+          required: false
+        }],
+        github: [{
+          type: 'input',
+          name: 'githubUser',
+          message: '1-1. Enter your github user or organization (e.g.: mojombo)'
+        }, {
+          type: 'input',
+          name: 'githubRepo',
+          message: '1-2. Enter your github repository name (e.g.: Docs)'
+        }, {
+          type: 'input',
+          name: 'githubBranch',
+          message: '1-3. Enter the branch name for this repository',
+          default: 'master'
+        }, {
+          type: 'input',
+          name: 'githubPath',
+          message: '1-4. Enter the relative path to the .md docs within the repository (e.g.: src)'
+        }, {
+          type: 'input',
+          name: 'githubAccess_token',
+          message: '1-5. [Optional] Provide your personal access token'
+        }]
+    }
+
+    // 2. Publish Questions  
+    var publishQuestions = [{
         type: 'list',
         name: "publishType",
         default: 'local',
         required: false,
-        message: "Choose where do you want to publish",
+        message: "2. Choose where do you want to publish",
         choices: [{
           name: 'Github (travis build)',
           value: 'github'
@@ -125,66 +92,90 @@ module.exports = yeoman.generators.Base.extend({
           name: 'Local',
           value: 'local'
         }]
-      }
+      }];
+
+    var publishSubQuestions = {
+        github: [
+         {
+          type: 'input',
+          name: 'publishUsername',
+          required: true,
+          message: '2-1. Enter the github username under which you want to publish'
+        }, {
+          type: 'input',
+          name: 'publishRepo',
+          required: true,
+          message: '2-2. Enter the github repository name under which you want to publish'
+        }, {
+          type: 'input',
+          name: 'githubAccess_token',
+          required: true,
+          message: '2-3. Provide github access token to build with travis and push on gh-pages'
+        }],
+        local: []
+    };
+
+    // 3. Type Question
+    var typeQuestion = [{
+        type: 'list',
+        name: 'mode',
+        message: '3. Choose an execution mode',
+        default: 'SPA',
+        choices: [{
+          name: 'Single Page App (SPA)',
+          value: 'SPA'
+        }, {
+          name: 'HTML',
+          value: "HTML"
+        }]
+      } //prompt user to answer questions
     ];
 
+    // 4/ Ask for theme
     var themePrompts = [{
       type: 'input',
       name: 'primaryColor',
-      message: '[Optional] Enter the primary color of your theme',
+      message: '4. [Optional] Enter the primary color of your theme',
       default: '#50BAEF',
       required: false
     }];
 
-
-    this.prompt(geralPrompts, function(props) {
-      this.prompt(hostTypeQuestions[props.hostType || 'file'], function(propsHostType) {
-        this.props = _.assign(propsHostType, props);
-
-        if (this.props.publishType == 'github') {
-          if (this.props.hostType == 'github') {
-            this.prompt(publishTypeQuestions.github[0], function(propsPublishType) {
-              this.props['publishEmail'] = propsPublishType['publishEmail'];
-              this.props['publishUsername'] = this.props['githubUser'];
-              this.props['publishRepo'] = this.props['githubRepo'];
+    var self = this;
+    self.prompt(sourceQuestion, function(propsSource) {
+      self.prompt(sourceSubQuestion[propsSource.hostType || 'file'], function(propsHostType) {
+        
+        self.prompt(publishQuestions, function(propsPublish) {
+          if (propsPublish.publishType == 'github' && propsSource.hostType != 'github') {
+            self.prompt(publishSubQuestions[propsPublish.publishType || 'local'], function(propsSubPublish) { 
               
-              this.prompt(themePrompts, function(propsIn) {
-                this.props['primaryColor'] = propsIn['primaryColor'];
-                done();
-              }.bind(this));
-
-            }.bind(this));
-          } else {
-            this.prompt(publishTypeQuestions[props.publishType || 'local'], function(propsPublishType) {
-
-              if (props.publishType == 'github') {
-                this.props['publishEmail'] = propsPublishType['publishEmail'];
-                this.props['publishUsername'] = propsPublishType['publishUsername'];
-                this.props['publishRepo'] = propsPublishType['publishRepo'];
-                if (propsPublishType['githubAccess_token'] && propsPublishType['githubAccess_token'] != '') {
-                  this.props['githubAccess_token'] = propsPublishType['githubAccess_token'];
-                }
-              }
-
-              this.prompt(themePrompts, function(propsIn) {
-                this.props['primaryColor'] = propsIn['primaryColor'];
-                done();
-              }.bind(this));
-
-            }.bind(this));
+              self.propsInSource = _.assign(propsHostType, propsSource);
+              self.propsInPublish = _.assign(propsSubPublish, propsPublish);
+              self.props = _.merge(self.propsInSource, self.propsInPublish);
+              typeQuestionApply(self);
+            });      
           }
-        } else {
-          this.prompt(themePrompts, function(propsIn) {
-            this.props['primaryColor'] = propsIn['primaryColor'];
-            done();
-          }.bind(this));
-        }
-        // To access props later use this.props.someOption;
+          else {
 
-      }.bind(this));
+              self.props = _.assign(propsHostType, propsSource);
+              self.props['publishType'] = propsPublish.publishType;
+              self.props['publishUsername'] = self.props['githubUser'];
+              self.props['publishRepo'] = self.props['githubRepo'];
+              typeQuestionApply(self);
+          }
+        });
 
-    }.bind(this));
+      });      
+    }); 
 
+    function typeQuestionApply(self) {
+      self.prompt(typeQuestion, function(propsTypes) {
+        self.prompt(themePrompts, function(propsTheme) {
+          self.props['mode'] = propsTypes.mode;
+          self.props['primaryColor'] = propsTheme.primaryColor;
+          done();
+        });
+      });
+    } 
   },
 
   writing: {
@@ -253,7 +244,6 @@ module.exports = yeoman.generators.Base.extend({
         githubBranch: "",
         githubAccess_token: "",
         primaryColor: "",
-        publishEmail: "",
         publishUsername: "",
         publishRepo: "",
         publishType: "",
