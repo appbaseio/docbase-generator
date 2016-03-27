@@ -10,7 +10,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to ' + chalk.red('GeneratorDocbase') + ' generator!'
+      'Welcome to ' + chalk.red('Docbase') + ' generator!'
     ));
 
     //1. source Question
@@ -18,21 +18,21 @@ module.exports = yeoman.generators.Base.extend({
     {
       type: 'input',
       name: 'start',
-      message: 'Press Enter to start generator'
+      message: 'Press enter to begin'
     }, {
         type: 'list',
         name: "hostType",
         default: 'file',
         required: true,
-        message: "1. Choose a location for your .md files",
+        message: '1. Choose a location for your .md files',
         choices: [{
-          name: 'Filesystem (default templates)',
+          name: 'Filesystem (comes with default templates)',
           value: 'file'
         }, {
           name: 'Github',
           value: 'github'
         }, {
-          name: 'External URL (bitbucket, your server, etc.)',
+          name: 'External URL',
           value: 'generic'
         }]
       }];
@@ -41,40 +41,40 @@ module.exports = yeoman.generators.Base.extend({
         generic: [{
           type: 'input',
           name: 'baseUrl',
-          message: '1-1. Enter the root URL'
+          message: '  a. Enter the base URL'
         }, {
           type: 'input',
           name: 'basePath',
-          message: '1-2. Enter the relative path from root URL'
+          message: '  b. Enter the relative path from the base URL'
         }],
         file: [{
           type: 'input',
           name: 'basePath',
-          message: '1-1. Enter the relative path from this directory where you will be adding the .md files',
+          message: '  c. Enter the relative path for .md files from present directory',
           default: 'docs',
           required: false
         }],
         github: [{
           type: 'input',
           name: 'githubUser',
-          message: '1-1. Enter your github user or organization (e.g.: mojombo)'
+          message: '  a. Enter your github user or organization name'
         }, {
           type: 'input',
           name: 'githubRepo',
-          message: '1-2. Enter your github repository name (e.g.: Docs)'
+          message: '  b. Enter your github repository name'
         }, {
           type: 'input',
           name: 'githubBranch',
-          message: '1-3. Enter the branch name for this repository',
+          message: '  c. Enter the branch name for this repository',
           default: 'master'
         }, {
           type: 'input',
           name: 'githubPath',
-          message: '1-4. Enter the relative path to the .md docs within the repository (e.g.: src)'
+          message: '  d. Enter the relative path for .md files within the branch'
         }, {
           type: 'input',
           name: 'githubAccess_token',
-          message: '1-5. [Optional] Provide your personal access token'
+          message: '  e. [Optional] Provide a github token with public access permissions'
         }]
     }
 
@@ -84,9 +84,9 @@ module.exports = yeoman.generators.Base.extend({
         name: "publishType",
         default: 'local',
         required: false,
-        message: "2. Choose where do you want to publish",
+        message: "2. Choose a method to publish Docbase",
         choices: [{
-          name: 'Github (travis build)',
+          name: 'Github (with travis integration)',
           value: 'github'
         }, {
           name: 'Local',
@@ -100,17 +100,17 @@ module.exports = yeoman.generators.Base.extend({
           type: 'input',
           name: 'publishUsername',
           required: true,
-          message: '2-1. Enter the github username under which you want to publish'
+          message: '  a. Enter the github username under which you want to publish'
         }, {
           type: 'input',
           name: 'publishRepo',
           required: true,
-          message: '2-2. Enter the github repository name under which you want to publish'
+          message: '  b. Enter the github repository name under which you want to publish'
         }, {
           type: 'input',
           name: 'githubAccess_token',
           required: true,
-          message: '2-3. Provide github access token to build with travis and push on gh-pages'
+          message: '  c. Provide a github token with public access permissions'
         }],
         local: []
     };
@@ -119,7 +119,7 @@ module.exports = yeoman.generators.Base.extend({
     var typeQuestion = [{
         type: 'list',
         name: 'mode',
-        message: '3. Choose an execution mode',
+        message: '3. Choose a mode to serve your docs',
         default: 'SPA',
         choices: [{
           name: 'Single Page App (SPA)',
@@ -135,7 +135,7 @@ module.exports = yeoman.generators.Base.extend({
     var themePrompts = [{
       type: 'input',
       name: 'primaryColor',
-      message: '4. [Optional] Enter the primary color of your theme',
+      message: '4. [Optional] Choose a primary color for your documentation hub',
       default: '#50BAEF',
       required: false
     }];
@@ -293,11 +293,11 @@ module.exports = yeoman.generators.Base.extend({
       });
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
-        '\n\n1) singup with travis at https://travis-ci.org/' +
-        '\n2) add your repository to travis by clicking add (+) repository button' +
-        '\n3) Turn the switch on for your publish repository' +
-        '\n- So, travis is ready to build gh-pages for your repo. ' +
-        '\n\n\n4) Now push the current directory to master branch of your publish repository.';
+        '\n\n1. Push the current directory to the github repository at https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git'
+        '\n2. Signup or login with travis at https://travis-ci.org/' +
+        '\n3. Add the above repository to travis by clicking "(+) add repository" button' +
+        '\n4. Turn the switch on for your publish repository' +
+        '\n--- Travis is now configured to serve docbase from gh-pages branch. ';
       console.log(buildInfo);
     }
   }
