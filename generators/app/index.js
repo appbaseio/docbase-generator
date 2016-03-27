@@ -9,10 +9,14 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to ' + chalk.red('Docbase') + ' generator!'
-    ));
-
+    this.log("Welcome to " +
+"\n    .___           ___.                         " +
+"\n  __| _/____   ____\\_ |__ _____    ______ ____  " +
+"\n / __ |/  _ \\_/ ___\\| __ \\\\__  \\  /  ___// __ \\ " +
+"\n/ /_/ (  <_> )  \\___| \\_\\ \\/ __ \\_\\___ \\\\  ___/ " +
+"\n\\____ |\\____/ \\___  >___  (____  /____  >\\___  >" +
+"\n     \\/           \\/    \\/     \\/     \\/     \\/ " +
+"\n        generator!\n");
     //1. source Question
     var sourceQuestion = [
     {
@@ -26,7 +30,7 @@ module.exports = yeoman.generators.Base.extend({
         required: true,
         message: '1. Choose a location for your .md files',
         choices: [{
-          name: 'Filesystem (comes with default templates)',
+          name: 'Filesystem (example docs available)',
           value: 'file'
         }, {
           name: 'Github',
