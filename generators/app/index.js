@@ -50,7 +50,7 @@ module.exports = yeoman.generators.Base.extend({
         file: [{
           type: 'input',
           name: 'basePath',
-          message: '  c. Enter the relative path for .md files from present directory',
+          message: '  a. Enter the relative path for .md files from present directory',
           default: 'docs',
           required: false
         }],
@@ -135,7 +135,7 @@ module.exports = yeoman.generators.Base.extend({
     var themePrompts = [{
       type: 'input',
       name: 'primaryColor',
-      message: '4. [Optional] Choose a primary color for your documentation hub',
+      message: '4. [Optional] Choose a primary color for the theme',
       default: '#50BAEF',
       required: false
     }];
