@@ -293,7 +293,7 @@ module.exports = yeoman.generators.Base.extend({
       });
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
-        '\n\n1. Push the current directory to the github repository at https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git'
+        '\n\n1. Push the current directory to the github repository at https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
         '\n2. Signup or login with travis at https://travis-ci.org/' +
         '\n3. Add the above repository to travis by clicking "(+) add repository" button' +
         '\n4. Turn the switch on for your publish repository' +
