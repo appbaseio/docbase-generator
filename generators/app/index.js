@@ -82,7 +82,7 @@ module.exports = yeoman.generators.Base.extend({
         }]
     }
 
-    // 2. Publish Questions  
+    // 2. Publish Questions
     var publishQuestions = [{
         type: 'list',
         name: "publishType",
@@ -147,16 +147,16 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     self.prompt(sourceQuestion, function(propsSource) {
       self.prompt(sourceSubQuestion[propsSource.hostType || 'file'], function(propsHostType) {
-        
+
         self.prompt(publishQuestions, function(propsPublish) {
           if (propsPublish.publishType == 'github' && propsSource.hostType != 'github') {
-            self.prompt(publishSubQuestions[propsPublish.publishType || 'local'], function(propsSubPublish) { 
-              
+            self.prompt(publishSubQuestions[propsPublish.publishType || 'local'], function(propsSubPublish) {
+
               self.propsInSource = _.assign(propsHostType, propsSource);
               self.propsInPublish = _.assign(propsSubPublish, propsPublish);
               self.props = _.merge(self.propsInSource, self.propsInPublish);
               typeQuestionApply(self);
-            });      
+            });
           }
           else {
 
@@ -168,8 +168,8 @@ module.exports = yeoman.generators.Base.extend({
           }
         });
 
-      });      
-    }); 
+      });
+    });
 
     function typeQuestionApply(self) {
       self.prompt(typeQuestion, function(propsTypes) {
@@ -179,7 +179,7 @@ module.exports = yeoman.generators.Base.extend({
           done();
         });
       });
-    } 
+    }
   },
 
   writing: {
@@ -297,11 +297,14 @@ module.exports = yeoman.generators.Base.extend({
       });
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
-        '\n\n1. Push the current directory to the github repository at https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
-        '\n2. Signup or login with travis at https://travis-ci.org/' +
-        '\n3. Add the above repository to travis by clicking "(+) add repository" button' +
-        '\n4. Turn the switch on for your publish repository' +
-        '\n--- Travis is now configured to serve docbase from gh-pages branch. ';
+        '\n\n1. Signup or login with travis at https://travis-ci.org/' +
+        '\n2. Add the https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git repository to travis by clicking "(+) add repository" button' +
+        '\n3. Turn the switch on to publish your repository' +
+        '\n4. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
+        '\n\n--- Travis is now forever configured to serve docbase from gh-pages branch---' +
+        '\n\n5. You should see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
+        '\n6. Check out your live docs at https://'+options.publishUsername+'.github.io/'+
+        options.publishRepo;
       console.log(buildInfo);
     }
   }
