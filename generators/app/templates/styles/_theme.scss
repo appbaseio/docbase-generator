@@ -12,3 +12,10 @@ a:active, a:hover, .menu a:hover{
  .tt-menu:before {
  	border-bottom-color: $theme-color;
  } 
+.paginationLink {
+	border-color: $theme-color;
+}
+.paginationLink:hover {
+	background: $theme-color;
+	border-color: darken($theme-color, 10%);
+}
