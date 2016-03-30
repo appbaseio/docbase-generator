@@ -19,10 +19,12 @@
              data-toggle="dropdown"
              role="button"
              aria-expanded="false"
+             title="{{folder.label}}"
              ng-bind="folder.label"></a>
           <ul class="dropdown-menu">
             <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
-              <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" ng-bind="file.label"></a>
+              <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" 
+             title="{{file.label}}" ng-bind="file.label"></a>
             </li>
           </ul>
         </li>
@@ -39,11 +41,13 @@
                    data-toggle="dropdown"
                    role="button"
                    aria-expanded="false"
-                   ng-bind="folder.label">
+                   ng-bind="folder.label"
+                    title="{{folder.label}}">
                   </a>
                 </li>   
                 <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
-                  <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" ng-bind="file.label"></a>
+                  <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" 
+             title="{{file.label}}" ng-bind="file.label"></a>
                 </li>
               </ul>
             </li>
