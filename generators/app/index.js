@@ -26,10 +26,13 @@ module.exports = yeoman.generators.Base.extend({
     }, {
         type: 'list',
         name: "hostType",
-        default: 'file',
+        default: 'example',
         required: true,
         message: '1. Choose a location for your .md files',
         choices: [{
+          name: 'Example',
+          value: 'example'
+        }, {
           name: 'Filesystem (example docs available)',
           value: 'file'
         }, {
@@ -79,7 +82,8 @@ module.exports = yeoman.generators.Base.extend({
           type: 'input',
           name: 'githubAccess_token',
           message: '  e. [Optional] Provide a github token with public access permissions'
-        }]
+        }],
+        example: []
     }
 
     // 2. Publish Questions
@@ -155,6 +159,10 @@ module.exports = yeoman.generators.Base.extend({
               self.propsInSource = _.assign(propsHostType, propsSource);
               self.propsInPublish = _.assign(propsSubPublish, propsPublish);
               self.props = _.merge(self.propsInSource, self.propsInPublish);
+              if(self.props.hostType === 'example') {
+                self.props.hostType = 'file';
+                self.props.basePath = 'docs';
+              }
               typeQuestionApply(self);
             });
           }
@@ -224,8 +232,8 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'styles/_style.css',
         'name': 'styles/style.css'
       }, {
-        'template': 'styles/_theme.scss',
-        'name': 'styles/theme.scss'
+        'template': 'styles/_theme.css',
+        'name': 'styles/theme.css'
       }, {
         'template': 'images/_docbase.png',
         'name': 'images/docbase.png'
