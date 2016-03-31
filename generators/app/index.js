@@ -59,7 +59,7 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'basePath',
         message: '  a. Enter the relative path for .md files from present directory',
-        default: 'docs',
+        default: 'example_docs',
         required: false
       }],
       github: [{
@@ -212,14 +212,14 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'html/_navbar.html',
         'name': 'html/navbar.html'
       }, {
-        'template': 'docs/v1/sample/_sample1.md',
-        'name': 'docs/v1/sample/sample1.md'
+        'template': 'example_docs/v1/sample/_sample1.md',
+        'name': 'example_docs/v1/sample/sample1.md'
       }, {
-        'template': 'docs/v1/howtostart/_starting.md',
-        'name': 'docs/v1/howtostart/starting.md'
+        'template': 'example_docs/v1/howtostart/_starting.md',
+        'name': 'example_docs/v1/howtostart/starting.md'
       }, {
-        'template': 'docs/v2/sample/_sample1.md',
-        'name': 'docs/v2/sample/sample1.md'
+        'template': 'example_docs/v2/sample/_sample1.md',
+        'name': 'example_docs/v2/sample/sample1.md'
       }, {
         'template': '_search-index.json',
         'name': 'search-index.json'
@@ -230,8 +230,8 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'styles/_theme.css',
         'name': 'styles/theme.css'
       }, {
-        'template': 'images/_docbase.png',
-        'name': 'images/docbase.png'
+        'template': 'images/_logo.png',
+        'name': 'images/logo.png'
       }, {
         'template': '_getGitMap.html',
         'name': 'getGitMap.html'
@@ -255,7 +255,7 @@ module.exports = yeoman.generators.Base.extend({
       };
       if (this.props.hostType === 'example') {
         this.props.hostType = 'file';
-        this.props.basePath = 'docs';
+        this.props.basePath = 'example_docs';
       }
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
@@ -320,8 +320,8 @@ module.exports = yeoman.generators.Base.extend({
 
     projectfiles: function() {
       this.fs.copy(
-        this.templatePath('images/_docbase.png'),
-        this.destinationPath('images/docbase.png')
+        this.templatePath('images/_logo.png'),
+        this.destinationPath('images/logo.png')
       );
     }
   },

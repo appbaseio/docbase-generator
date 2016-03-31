@@ -7,7 +7,7 @@
       <span class="icon-bar"></span>
     </button>
     <a id="docs-appbase-logo" class="navbar-brand" href="#/">
-      <img src="./images/docbase.png" />
+      <img src="./images/logo.png" />
     </a>
   </div>
   <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -25,7 +25,7 @@
            </a>
           <ul class="dropdown-menu">
             <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
-              <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" 
+              <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}"
              title="{{file.label}}" ng-bind="file.label"></a>
             </li>
           </ul>
@@ -33,7 +33,7 @@
       </ul>
       <ul class="nav navbar-nav category-li">
         <li class="dropdown menu-large">
-          <a class="dropdown-toggle pointer" data-toggle="dropdown">more <b class="caret"></b></a>       
+          <a class="dropdown-toggle pointer" data-toggle="dropdown">more <b class="caret"></b></a>
           <ul class="dropdown-menu megamenu row">
             <li class="col-sm-3 megamenu-item" ng-repeat="folder in map[currentVersion]">
               <ul>
@@ -46,9 +46,9 @@
                    ng-bind="folder.label"
                     title="{{folder.label}}">
                   </a>
-                </li>   
+                </li>
                 <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
-                  <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" 
+                  <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}"
              title="{{file.label}}" ng-bind="file.label"></a>
                 </li>
               </ul>
@@ -115,7 +115,7 @@
         <li class="col-xs-12">
           <ul class="nav navbar-nav">
             <li class="dropdown menu-large">
-              <a class="dropdown-toggle pointer" data-toggle="dropdown">more <b class="caret"></b></a>       
+              <a class="dropdown-toggle pointer" data-toggle="dropdown">more <b class="caret"></b></a>
               <ul class="dropdown-menu megamenu row">
                 <li class="col-sm-3 megamenu-item" ng-repeat="folder in map[currentVersion]">
                   <ul>
@@ -128,9 +128,9 @@
                        ng-bind="folder.label"
                         title="{{folder.label}}">
                       </a>
-                    </li>   
+                    </li>
                     <li ng-repeat="file in folder.files" data-ng-hide="file.name == 'index'">
-                      <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}" 
+                      <a ng-href="#/{{currentVersion}}/{{folder.name}}/{{file.name}}"
                  title="{{file.label}}" ng-bind="file.label"></a>
                     </li>
                   </ul>

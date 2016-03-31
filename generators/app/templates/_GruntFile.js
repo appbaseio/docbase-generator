@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 		docbase: {
 			def: {
 				options: {
-					generatePath: "docs_html/",
+					generatePath: "build_html/",
 					generateSearchIndex: true,
 					generateHtml: <%= generateHtml %>,
 					baseUrl: "./",
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 					baseUrl: "./",
 					operation: '<%= gruntOperation %>',
 					urlToAccess: "http://localhost:9001/",
-					assets: ['docs', 'html', 'index.html', 'bower_components', 'styles', 'images', 'docbase-config.js', 'search-index.json' ],
+					assets: ['example_docs', 'html', 'index.html', 'bower_components', 'styles', 'images', 'docbase-config.js', 'search-index.json' ],
 					checkLoadedSelector : '#navbar-collapse'
 				}
 			}
@@ -57,13 +57,13 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-docbase');
 	grunt.loadNpmTasks('grunt-gh-pages');
-	
+
 	// Default task.
-	
+
 	var target = grunt.option('target') || '<%= gruntTarget %>';
-	
+
 	grunt.registerTask('default', ['connect', 'docbase:'+target]);
 	grunt.registerTask('publish', ['connect', 'docbase:'+target, 'gh-pages']);
 	grunt.registerTask('spa', ['connect', 'docbase:spa']);
-	
+
 };
