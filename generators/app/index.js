@@ -27,12 +27,12 @@ module.exports = yeoman.generators.Base.extend({
     }, {
       type: 'list',
       name: "hostType",
-      default: 'example',
+      default: 'magic',
       required: true,
-      message: '1. Choose a location for your .md files',
+      message: '1. Where is your .md project hosted?',
       choices: [{
-        name: 'Example',
-        value: 'example'
+        name: 'Magic (⊃｡•́‿•̀｡)⊃━☆ﾟ.*･｡ﾟ',
+        value: 'magic'
       }, {
         name: 'Filesystem',
         value: 'file'
@@ -59,7 +59,7 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'basePath',
         message: '  a. Enter the relative path for .md files from present directory',
-        default: 'example_docs',
+        default: 'boilerplate_docs',
         required: false
       }],
       github: [{
@@ -84,7 +84,7 @@ module.exports = yeoman.generators.Base.extend({
         name: 'githubAccess_token',
         message: '  e. [Optional] Provide a github token with public access permissions'
       }],
-      example: []
+      magic: []
     }
 
     // 2. Publish Questions
@@ -93,13 +93,13 @@ module.exports = yeoman.generators.Base.extend({
       name: "publishType",
       default: 'local',
       required: false,
-      message: "2. Choose a method to publish Docbase",
+      message: "2. Where would you like to publish?",
       choices: [{
-        name: 'Github (with travis integration)',
-        value: 'github'
-      }, {
-        name: 'Local',
+        name: 'Locally',
         value: 'local'
+      }, {
+        name: 'Github pages (with travis-ci)',
+        value: 'github'
       }]
     }];
 
@@ -123,35 +123,21 @@ module.exports = yeoman.generators.Base.extend({
       local: []
     };
 
-    // 3. Type Question
-    var typeQuestion = [{
-        type: 'list',
-        name: 'mode',
-        message: '3. Choose a mode to serve your docs',
-        default: 'SPA',
-        choices: [{
-          name: 'Single Page App (SPA)',
-          value: 'SPA'
-        }, {
-          name: 'HTML',
-          value: "HTML"
-        }]
-      } //prompt user to answer questions
-    ];
-
-    // 4/ Ask for theme
+    // 3. Ask for theme
     var themePrompts = [{
       type: 'input',
       name: 'primaryColor',
-      message: '4. Choose a primary color for the theme (like green, #cdabef)',
-      default: '#50BAEF',
+      message: '3. Choose your primary theme color (say green, #abcdef)',
+      default: 'firebrick',
       required: false
     }];
 
     var self = this;
     self.prompt(sourceQuestion, function(propsSource) {
+      if (propsSource.hostType === 'magic') {
+        self.log(chalk.dim('Docbase will generate a template directory ') + chalk.green.bold('boilerplate_docs/')+ chalk.dim(' with .md files, just for you.'));
+      }
       self.prompt(sourceSubQuestion[propsSource.hostType || 'file'], function(propsHostType) {
-
         self.prompt(publishQuestions, function(propsPublish) {
           if (propsPublish.publishType == 'github' && propsSource.hostType != 'github') {
             self.prompt(publishSubQuestions[propsPublish.publishType || 'local'], function(propsSubPublish) {
@@ -175,12 +161,9 @@ module.exports = yeoman.generators.Base.extend({
     });
 
     function typeQuestionApply(self) {
-      self.prompt(typeQuestion, function(propsTypes) {
-        self.prompt(themePrompts, function(propsTheme) {
-          self.props['mode'] = propsTypes.mode;
-          self.props['primaryColor'] = propsTheme.primaryColor;
-          done();
-        });
+      self.prompt(themePrompts, function(propsTheme) {
+        self.props['primaryColor'] = propsTheme.primaryColor;
+        done();
       });
     }
   },
@@ -212,14 +195,14 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'html/_navbar.html',
         'name': 'html/navbar.html'
       }, {
-        'template': 'example_docs/v1/sample/_sample1.md',
-        'name': 'example_docs/v1/sample/sample1.md'
+        'template': 'boilerplate_docs/v1/sample/_sample1.md',
+        'name': 'boilerplate_docs/v1/sample/sample1.md'
       }, {
-        'template': 'example_docs/v1/howtostart/_starting.md',
-        'name': 'example_docs/v1/howtostart/starting.md'
+        'template': 'boilerplate_docs/v1/howtostart/_starting.md',
+        'name': 'boilerplate_docs/v1/howtostart/starting.md'
       }, {
-        'template': 'example_docs/v2/sample/_sample1.md',
-        'name': 'example_docs/v2/sample/sample1.md'
+        'template': 'boilerplate_docs/v2/sample/_sample1.md',
+        'name': 'boilerplate_docs/v2/sample/sample1.md'
       }, {
         'template': '_search-index.json',
         'name': 'search-index.json'
@@ -253,19 +236,19 @@ module.exports = yeoman.generators.Base.extend({
         publishType: "",
         gruntTarget: ""
       };
-      if (this.props.hostType === 'example') {
+      if (this.props.hostType === 'magic') {
         this.props.hostType = 'file';
-        this.props.basePath = 'example_docs';
+        this.props.basePath = 'boilerplate_docs';
       }
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
-      options.generateHtml = options.mode === 'HTML';
+      options.generateHtml = true;
       options.githubAccess_token = new Buffer(options.githubAccess_token).toString('base64');
-      options.baseFolder = options.mode === 'HTML' ? 'docs_html' : 'spa';
+      options.baseFolder = 'build_html';
       var publishRepoLink = "'https://' + new Buffer(process.env.DOCBASE_TOKEN, 'base64').toString() + '@github.com/" + options.publishUsername + "/" + options.publishRepo + ".git'";
       options.publishRepoLink = options.publishType == 'github' ? publishRepoLink : "''";
       options.gruntOperation = options.publishType == 'github' ? 'parallel' : 'series';
-      options.gruntTarget = options.mode == 'HTML' ? 'def' : 'spa';
+      options.gruntTarget = 'def';
 
       var self = this;
       function getVersions() {
@@ -331,10 +314,7 @@ module.exports = yeoman.generators.Base.extend({
       this.installDependencies({
         skipInstall: this.options['skip-install'],
         callback: function() {
-          if (options.mode === 'HTML')
-            this.spawnCommand('grunt');
-          else
-            this.spawnCommand('grunt', ['spa']);
+          this.spawnCommand('grunt');
         }.bind(this)
       });
     } else if (options.publishType == 'github') {
@@ -343,9 +323,9 @@ module.exports = yeoman.generators.Base.extend({
         '\n2. Add the https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git repository to travis by clicking "(+) add repository" button' +
         '\n3. Turn the switch on to publish your repository' +
         '\n4. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
-        '\n\n--- Travis is now forever configured to serve docbase from gh-pages branch---' +
-        '\n\n5. You should see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
-        '\n6. Check out your live docs at https://'+options.publishUsername+'.github.io/'+
+        '\n\n--- Travis is now configured to forever publish your docbase site on gh-pages branch---' +
+        '\n\n5. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
+        '\n6. Your docbase site is live at https://'+options.publishUsername+'.github.io/'+
         options.publishRepo;
       console.log(buildInfo);
     }
