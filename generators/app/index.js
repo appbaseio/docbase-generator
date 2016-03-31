@@ -159,10 +159,6 @@ module.exports = yeoman.generators.Base.extend({
               self.propsInSource = _.assign(propsHostType, propsSource);
               self.propsInPublish = _.assign(propsSubPublish, propsPublish);
               self.props = _.merge(self.propsInSource, self.propsInPublish);
-              if(self.props.hostType === 'example') {
-                self.props.hostType = 'file';
-                self.props.basePath = 'docs';
-              }
               typeQuestionApply(self);
             });
           }
@@ -258,6 +254,10 @@ module.exports = yeoman.generators.Base.extend({
         publishType: "",
         gruntTarget: ""
       };
+      if(this.props.hostType === 'example') {
+        this.props.hostType = 'file';
+        this.props.basePath = 'docs';
+      }
       options = _.assign(defaultOptions, this.props);
       options.generateSearchIndex = true;
       options.generateHtml = options.mode === 'HTML';
