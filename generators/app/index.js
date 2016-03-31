@@ -4,123 +4,123 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var _ = require('lodash');
 var options = {};
+var p = require('process');
+var f = require('fs');
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
     var done = this.async();
 
     // Have Yeoman greet the user.
     this.log("Welcome to " +
-"\n    .___           ___.                         " +
-"\n  __| _/____   ____\\_ |__ _____    ______ ____  " +
-"\n / __ |/  _ \\_/ ___\\| __ \\\\__  \\  /  ___// __ \\ " +
-"\n/ /_/ (  <_> )  \\___| \\_\\ \\/ __ \\_\\___ \\\\  ___/ " +
-"\n\\____ |\\____/ \\___  >___  (____  /____  >\\___  >" +
-"\n     \\/           \\/    \\/     \\/     \\/     \\/ " +
-"\n        generator!\n");
+      "\n    .___           ___.                         " +
+      "\n  __| _/____   ____\\_ |__ _____    ______ ____  " +
+      "\n / __ |/  _ \\_/ ___\\| __ \\\\__  \\  /  ___// __ \\ " +
+      "\n/ /_/ (  <_> )  \\___| \\_\\ \\/ __ \\_\\___ \\\\  ___/ " +
+      "\n\\____ |\\____/ \\___  >___  (____  /____  >\\___  >" +
+      "\n     \\/           \\/    \\/     \\/     \\/     \\/ " +
+      "\n        generator!\n");
     //1. source Question
-    var sourceQuestion = [
-    {
+    var sourceQuestion = [{
       type: 'input',
       name: 'start',
       message: 'Press enter to begin'
     }, {
-        type: 'list',
-        name: "hostType",
-        default: 'example',
-        required: true,
-        message: '1. Choose a location for your .md files',
-        choices: [{
-          name: 'Example',
-          value: 'example'
-        }, {
-          name: 'Filesystem',
-          value: 'file'
-        }, {
-          name: 'Github',
-          value: 'github'
-        }, {
-          name: 'External URL',
-          value: 'generic'
-        }]
-      }];
+      type: 'list',
+      name: "hostType",
+      default: 'example',
+      required: true,
+      message: '1. Choose a location for your .md files',
+      choices: [{
+        name: 'Example',
+        value: 'example'
+      }, {
+        name: 'Filesystem',
+        value: 'file'
+      }, {
+        name: 'Github',
+        value: 'github'
+      }, {
+        name: 'External URL',
+        value: 'generic'
+      }]
+    }];
 
     var sourceSubQuestion = {
-        generic: [{
-          type: 'input',
-          name: 'baseUrl',
-          message: '  a. Enter the base URL'
-        }, {
-          type: 'input',
-          name: 'basePath',
-          message: '  b. Enter the relative path from the base URL'
-        }],
-        file: [{
-          type: 'input',
-          name: 'basePath',
-          message: '  a. Enter the relative path for .md files from present directory',
-          default: 'docs',
-          required: false
-        }],
-        github: [{
-          type: 'input',
-          name: 'githubUser',
-          message: '  a. Enter your github user or organization name'
-        }, {
-          type: 'input',
-          name: 'githubRepo',
-          message: '  b. Enter your github repository name'
-        }, {
-          type: 'input',
-          name: 'githubBranch',
-          message: '  c. Enter the branch name for this repository',
-          default: 'master'
-        }, {
-          type: 'input',
-          name: 'githubPath',
-          message: '  d. Enter the relative path for .md files within the branch'
-        }, {
-          type: 'input',
-          name: 'githubAccess_token',
-          message: '  e. [Optional] Provide a github token with public access permissions'
-        }],
-        example: []
+      generic: [{
+        type: 'input',
+        name: 'baseUrl',
+        message: '  a. Enter the base URL'
+      }, {
+        type: 'input',
+        name: 'basePath',
+        message: '  b. Enter the relative path from the base URL'
+      }],
+      file: [{
+        type: 'input',
+        name: 'basePath',
+        message: '  a. Enter the relative path for .md files from present directory',
+        default: 'docs',
+        required: false
+      }],
+      github: [{
+        type: 'input',
+        name: 'githubUser',
+        message: '  a. Enter your github user or organization name'
+      }, {
+        type: 'input',
+        name: 'githubRepo',
+        message: '  b. Enter your github repository name'
+      }, {
+        type: 'input',
+        name: 'githubBranch',
+        message: '  c. Enter the branch name for this repository',
+        default: 'master'
+      }, {
+        type: 'input',
+        name: 'githubPath',
+        message: '  d. Enter the relative path for .md files within the branch'
+      }, {
+        type: 'input',
+        name: 'githubAccess_token',
+        message: '  e. [Optional] Provide a github token with public access permissions'
+      }],
+      example: []
     }
 
     // 2. Publish Questions
     var publishQuestions = [{
-        type: 'list',
-        name: "publishType",
-        default: 'local',
-        required: false,
-        message: "2. Choose a method to publish Docbase",
-        choices: [{
-          name: 'Github (with travis integration)',
-          value: 'github'
-        }, {
-          name: 'Local',
-          value: 'local'
-        }]
-      }];
+      type: 'list',
+      name: "publishType",
+      default: 'local',
+      required: false,
+      message: "2. Choose a method to publish Docbase",
+      choices: [{
+        name: 'Github (with travis integration)',
+        value: 'github'
+      }, {
+        name: 'Local',
+        value: 'local'
+      }]
+    }];
 
     var publishSubQuestions = {
-        github: [
-         {
-          type: 'input',
-          name: 'publishUsername',
-          required: true,
-          message: '  a. Enter the github username under which you want to publish'
-        }, {
-          type: 'input',
-          name: 'publishRepo',
-          required: true,
-          message: '  b. Enter the github repository name under which you want to publish'
-        }, {
-          type: 'input',
-          name: 'githubAccess_token',
-          required: true,
-          message: '  c. Provide a github token with public access permissions'
-        }],
-        local: []
+      github: [{
+        type: 'input',
+        name: 'publishUsername',
+        required: true,
+        message: '  a. Enter the github username under which you want to publish'
+      }, {
+        type: 'input',
+        name: 'publishRepo',
+        required: true,
+        message: '  b. Enter the github repository name under which you want to publish'
+      }, {
+        type: 'input',
+        name: 'githubAccess_token',
+        required: true,
+        message: '  c. Provide a github token with public access permissions'
+      }],
+      local: []
     };
 
     // 3. Type Question
@@ -161,14 +161,13 @@ module.exports = yeoman.generators.Base.extend({
               self.props = _.merge(self.propsInSource, self.propsInPublish);
               typeQuestionApply(self);
             });
-          }
-          else {
+          } else {
 
-              self.props = _.assign(propsHostType, propsSource);
-              self.props['publishType'] = propsPublish.publishType;
-              self.props['publishUsername'] = self.props['githubUser'];
-              self.props['publishRepo'] = self.props['githubRepo'];
-              typeQuestionApply(self);
+            self.props = _.assign(propsHostType, propsSource);
+            self.props['publishType'] = propsPublish.publishType;
+            self.props['publishUsername'] = self.props['githubUser'];
+            self.props['publishRepo'] = self.props['githubRepo'];
+            typeQuestionApply(self);
           }
         });
 
@@ -254,7 +253,7 @@ module.exports = yeoman.generators.Base.extend({
         publishType: "",
         gruntTarget: ""
       };
-      if(this.props.hostType === 'example') {
+      if (this.props.hostType === 'example') {
         this.props.hostType = 'file';
         this.props.basePath = 'docs';
       }
@@ -268,9 +267,47 @@ module.exports = yeoman.generators.Base.extend({
       options.gruntOperation = options.publishType == 'github' ? 'parallel' : 'series';
       options.gruntTarget = options.mode == 'HTML' ? 'def' : 'spa';
 
-      console.log(options);
-
       var self = this;
+      function getVersions() {
+        var defaultVersions = {
+          "v1": [{
+            "name": "sample",
+            "label": "Sample Label",
+            "files": [{
+              "name": "sample1",
+              "label": "Sample 1 Doc"
+            }, ]
+          }, {
+            "name": "howtostart",
+            "label": "How to start",
+            "files": [{
+              "name": "starting",
+              "label": "Starting with docbase"
+            }]
+          }],
+          "v2": [{
+            "name": "sample",
+            "label": "Sample Label",
+            "files": [{
+              "name": "sample1",
+              "label": "Sample 2 Doc"
+            }]
+          }]
+        };
+        var target_file = 'docbase-config.js';
+        if(self.fs.exists(target_file)) {
+          var configData = null;
+          var configConten = self.fs.read(target_file);
+          var configContent = eval(configConten + " configData = docbaseConfig;");
+          if(configData.hasOwnProperty('versions')) {
+            defaultVersions = configData.versions;
+          }
+        }
+        return defaultVersions;
+      }
+
+      options.getVersions = JSON.stringify(getVersions(), null, 2);
+
       var templateData = options;
       files.forEach(function(file) {
         self.fs.copyTpl(
