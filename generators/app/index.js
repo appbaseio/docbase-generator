@@ -33,7 +33,7 @@ module.exports = yeoman.generators.Base.extend({
           name: 'Example',
           value: 'example'
         }, {
-          name: 'Filesystem (example docs available)',
+          name: 'Filesystem',
           value: 'file'
         }, {
           name: 'Github',
@@ -143,7 +143,7 @@ module.exports = yeoman.generators.Base.extend({
     var themePrompts = [{
       type: 'input',
       name: 'primaryColor',
-      message: '4. [Optional] Choose a primary color for the theme',
+      message: '4. Choose a primary color for the theme (like green, #cdabef)',
       default: '#50BAEF',
       required: false
     }];
@@ -243,9 +243,6 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         'template': '_.travis.yml',
         'name': '.travis.yml'
-      }, {
-        'template': 'docs_html/readme.md',
-        'name': 'docs_html/readme.md'
       }];
       var defaultOptions = {
         baseUrl: "",
