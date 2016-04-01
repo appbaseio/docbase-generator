@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 			spa: {
 				options: {
 					onlysearchIndex: true,
-					generatePath: "spa/",
+					generatePath: "build_html/",
 					generateSearchIndex : true,
 					generateHtml : false,
 					baseUrl: "./",
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 		'gh-pages': {
 			def: {
 				options: {
-					base: '<%= baseFolder %>',
+					base: 'build_html',
 					user: {
 						name: 'Docbase bot',
 						email: 'awesome@docba.se'
