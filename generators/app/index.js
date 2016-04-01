@@ -252,7 +252,7 @@ module.exports = yeoman.generators.Base.extend({
 
       var self = this;
       function getVersions() {
-        var defaultVersions = {
+        var sampleVersions = {
           "v1": [{
             "name": "sample",
             "label": "Sample Label",
@@ -277,19 +277,28 @@ module.exports = yeoman.generators.Base.extend({
             }]
           }]
         };
+        var default_version = "";
         var target_file = 'docbase-config.js';
         if(self.fs.exists(target_file)) {
           var configData = null;
           var configConten = self.fs.read(target_file);
           var configContent = eval(configConten + " configData = docbaseConfig;");
+          console.log(configData);
           if(configData.hasOwnProperty('versions')) {
-            defaultVersions = configData.versions;
+            sampleVersions = configData.versions;
+          }
+          if(configData.hasOwnProperty('default_version')) {
+            default_version = configData.default_version;
           }
         }
-        return defaultVersions;
+        return {
+          "sampleVersions": sampleVersions,
+          "default_version": default_version
+        };
       }
 
-      options.getVersions = JSON.stringify(getVersions(), null, 2);
+      options.getVersions = JSON.stringify(getVersions().sampleVersions, null, 2);
+      options.defaultVersion = getVersions().default_version;
 
       var templateData = options;
       files.forEach(function(file) {
