@@ -1,9 +1,5 @@
 var docbaseConfig = {
   "method": "<%= hostType %>",
-  "map": {
-    "file": "map.json",
-    "path": ""
-  },
   "generic": {
     "baseurl": "<%= baseUrl %>",
     "path": "<%= basePath %>"
