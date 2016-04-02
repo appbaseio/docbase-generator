@@ -1,6 +1,6 @@
 # Changelog
 
-This is ``v2`` (in the works) of the docbase manual. If you are looking to get started, check out the getting started page [here](http://appbaseio.github.io/docbase-manual/v1/getting-started/start.html).
+This is ``v2`` (in the works) of the docbase manual. If you are looking to get started, check out the getting started page [here](/v1/getting-started/start.html).
 
 ## Roadmap
 
