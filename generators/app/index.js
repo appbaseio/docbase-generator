@@ -195,14 +195,32 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'html/_navbar.html',
         'name': 'html/navbar.html'
       }, {
-        'template': 'boilerplate_docs/v1/sample/_sample1.md',
-        'name': 'boilerplate_docs/v1/sample/sample1.md'
+        'template': 'boilerplate_docs/v1/getting-started/_configure.md',
+        'name': 'boilerplate_docs/v1/getting-started/configure.md'
       }, {
-        'template': 'boilerplate_docs/v1/howtostart/_starting.md',
-        'name': 'boilerplate_docs/v1/howtostart/starting.md'
+        'template': 'boilerplate_docs/v1/getting-started/_start.md',
+        'name': 'boilerplate_docs/v1/getting-started/start.md'
       }, {
-        'template': 'boilerplate_docs/v2/sample/_sample1.md',
-        'name': 'boilerplate_docs/v2/sample/sample1.md'
+        'template': 'boilerplate_docs/v1/features/_colors.md',
+        'name': 'boilerplate_docs/v1/features/colors.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_gh-pages.md',
+        'name': 'boilerplate_docs/v1/features/gh-pages.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_search.md',
+        'name': 'boilerplate_docs/v1/features/search.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_versions.md',
+        'name': 'boilerplate_docs/v1/features/versions.md'
+      }, {
+        'template': 'boilerplate_docs/v1/layout/_3col.md',
+        'name': 'boilerplate_docs/v1/layout/3col.md'
+      }, {
+        'template': 'boilerplate_docs/v1/layout/_navigation.md',
+        'name': 'boilerplate_docs/v1/layout/navigation.md'
+      }, {
+        'template': 'boilerplate_docs/v2/changelog/_changelog.md',
+        'name': 'boilerplate_docs/v2/changelog/changelog.md'
       }, {
         'template': '_search-index.json',
         'name': 'search-index.json'
@@ -253,29 +271,68 @@ module.exports = yeoman.generators.Base.extend({
       var self = this;
       function getVersions() {
         var sampleVersions = {
-          "v1": [{
-            "name": "sample",
-            "label": "Sample Label",
-            "files": [{
-              "name": "sample1",
-              "label": "Sample 1 Doc"
-            }, ]
-          }, {
-            "name": "howtostart",
-            "label": "How to start",
-            "files": [{
-              "name": "starting",
-              "label": "Starting with docbase"
-            }]
-          }],
-          "v2": [{
-            "name": "sample",
-            "label": "Sample Label",
-            "files": [{
-              "name": "sample1",
-              "label": "Sample 2 Doc"
-            }]
-          }]
+          "v1": [
+            {
+              "name": "getting-started",
+              "label": "Getting Started",
+              "files": [
+                {
+                  "name": "start",
+                  "label": "Quick Start"
+                },
+                {
+                  "name": "configure",
+                  "label": "Configuration Options"
+                }
+              ]
+            },
+            {
+              "name": "features",
+              "label": "Features",
+              "files": [
+                {
+                  "name": "search",
+                  "label": "Search"
+                },
+                {
+                  "name": "colors",
+                  "label": "Colorful"
+                },
+                {
+                  "name": "gh-pages",
+                  "label": "Deploy to Github"
+                },
+                {
+                  "name": "versions",
+                  "label": "Versatile Navigation"
+                }
+              ]
+            },
+            {
+              "name": "layout",
+              "label": "Layout",
+              "files": [
+                {
+                  "name": "navigation",
+                  "label": "Site Navigation"
+                },
+                {
+                  "name": "3col",
+                  "label": "Three columns"
+                }
+              ]
+            }
+          ],
+          "v2": [
+            {
+              "name": "changelog",
+              "label": "Changes",
+              "files": [{
+                "name": "changelog",
+                "label": "Changelog"
+              }]
+            }
+          ]
         };
         var default_version = "";
         var target_file = 'docbase-config.js';
