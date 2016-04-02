@@ -233,7 +233,7 @@ module.exports = yeoman.generators.Base.extend({
         primaryColor: "",
         publishUsername: "",
         publishRepo: "",
-        publishType: "",
+        publishType: "local",
         gruntTarget: ""
       };
       if (this.props.hostType === 'magic') {
