@@ -31,7 +31,7 @@ module.exports = yeoman.generators.Base.extend({
       required: true,
       message: '1. Where is your .md project hosted?',
       choices: [{
-        name: 'Magic (⊃｡•́‿•̀｡)⊃━☆ﾟ.*･｡ﾟ',
+        name: 'Magic        *(۞ ͜۞)* ',
         value: 'magic'
       }, {
         name: 'Filesystem',
@@ -135,7 +135,7 @@ module.exports = yeoman.generators.Base.extend({
     var self = this;
     self.prompt(sourceQuestion, function(propsSource) {
       if (propsSource.hostType === 'magic') {
-        self.log(chalk.dim('Docbase will generate a template directory ') + chalk.green.bold('boilerplate_docs/')+ chalk.dim(' with .md files, just for you.'));
+        self.log(chalk.dim('Docbase generated a template directory ') + chalk.green.bold('boilerplate_docs/')+ chalk.dim(' with .md files, just for you.'));
       }
       self.prompt(sourceSubQuestion[propsSource.hostType || 'file'], function(propsHostType) {
         self.prompt(publishQuestions, function(propsPublish) {
@@ -386,7 +386,7 @@ module.exports = yeoman.generators.Base.extend({
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
         '\n\n1. Signup or login with travis at https://travis-ci.org/' +
-        '\n2. Go to https://travis-ci.org/profile/ and flick the switch on next to ' + options.publishUsername+'/'+options.publishRepo
+        '\n2. Go to https://travis-ci.org/profile/ and flick the switch on next to ' + options.publishUsername+'/'+options.publishRepo +
         '\n3. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
         '\n\n--- Travis is now configured to forever publish your docbase site on gh-pages branch---' +
         '\n\n4. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
