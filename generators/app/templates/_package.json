@@ -2,7 +2,7 @@
   "name": "",
   "version": "0.0.1",
   "authors": [],
-  "description": "",
+  "description": "Documentation project powered by docbase",
   "contributors": [],
   "scripts": {
     "test": "grunt publish"

@@ -8,3 +8,6 @@ logs
 # Dependency directories
 node_modules
 bower_components
+
+# OSX metadata
+*.DS_Store
