@@ -195,14 +195,32 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'html/_navbar.html',
         'name': 'html/navbar.html'
       }, {
-        'template': 'boilerplate_docs/v1/sample/_sample1.md',
-        'name': 'boilerplate_docs/v1/sample/sample1.md'
+        'template': 'boilerplate_docs/v1/getting-started/_configure.md',
+        'name': 'boilerplate_docs/v1/getting-started/configure.md'
       }, {
-        'template': 'boilerplate_docs/v1/howtostart/_starting.md',
-        'name': 'boilerplate_docs/v1/howtostart/starting.md'
+        'template': 'boilerplate_docs/v1/getting-started/_start.md',
+        'name': 'boilerplate_docs/v1/getting-started/start.md'
       }, {
-        'template': 'boilerplate_docs/v2/sample/_sample1.md',
-        'name': 'boilerplate_docs/v2/sample/sample1.md'
+        'template': 'boilerplate_docs/v1/features/_colors.md',
+        'name': 'boilerplate_docs/v1/features/colors.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_gh-pages.md',
+        'name': 'boilerplate_docs/v1/features/gh-pages.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_search.md',
+        'name': 'boilerplate_docs/v1/features/search.md'
+      }, {
+        'template': 'boilerplate_docs/v1/features/_versions.md',
+        'name': 'boilerplate_docs/v1/features/versions.md'
+      }, {
+        'template': 'boilerplate_docs/v1/layout/_3col.md',
+        'name': 'boilerplate_docs/v1/layout/3col.md'
+      }, {
+        'template': 'boilerplate_docs/v1/layout/_navigation.md',
+        'name': 'boilerplate_docs/v1/layout/navigation.md'
+      }, {
+        'template': 'boilerplate_docs/v2/changelog/_changelog.md',
+        'name': 'boilerplate_docs/v2/changelog/changelog.md'
       }, {
         'template': '_search-index.json',
         'name': 'search-index.json'
@@ -255,29 +273,68 @@ module.exports = yeoman.generators.Base.extend({
       var self = this;
       function getVersions() {
         var sampleVersions = {
-          "v1": [{
-            "name": "sample",
-            "label": "Sample Label",
-            "files": [{
-              "name": "sample1",
-              "label": "Sample 1 Doc"
-            }, ]
-          }, {
-            "name": "howtostart",
-            "label": "How to start",
-            "files": [{
-              "name": "starting",
-              "label": "Starting with docbase"
-            }]
-          }],
-          "v2": [{
-            "name": "sample",
-            "label": "Sample Label",
-            "files": [{
-              "name": "sample1",
-              "label": "Sample 2 Doc"
-            }]
-          }]
+          "v1": [
+            {
+              "name": "getting-started",
+              "label": "Getting Started",
+              "files": [
+                {
+                  "name": "start",
+                  "label": "Quick Start"
+                },
+                {
+                  "name": "configure",
+                  "label": "Configuration Options"
+                }
+              ]
+            },
+            {
+              "name": "features",
+              "label": "Features",
+              "files": [
+                {
+                  "name": "search",
+                  "label": "Search"
+                },
+                {
+                  "name": "colors",
+                  "label": "Colorful"
+                },
+                {
+                  "name": "gh-pages",
+                  "label": "Deploy to Github"
+                },
+                {
+                  "name": "versions",
+                  "label": "Versatile Navigation"
+                }
+              ]
+            },
+            {
+              "name": "layout",
+              "label": "Layout",
+              "files": [
+                {
+                  "name": "navigation",
+                  "label": "Site Navigation"
+                },
+                {
+                  "name": "3col",
+                  "label": "Three columns"
+                }
+              ]
+            }
+          ],
+          "v2": [
+            {
+              "name": "changelog",
+              "label": "Changes",
+              "files": [{
+                "name": "changelog",
+                "label": "Changelog"
+              }]
+            }
+          ]
         };
         var default_version = "";
         var manual_override = false;
@@ -337,12 +394,11 @@ module.exports = yeoman.generators.Base.extend({
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
         '\n\n1. Signup or login with travis at https://travis-ci.org/' +
-        '\n2. Add the https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git repository to travis by clicking "(+) add repository" button' +
-        '\n3. Turn the switch on to publish your repository' +
-        '\n4. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
+        '\n2. Go to https://travis-ci.org/profile/ and flick the switch on next to ' + options.publishUsername+'/'+options.publishRepo
+        '\n3. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
         '\n\n--- Travis is now configured to forever publish your docbase site on gh-pages branch---' +
-        '\n\n5. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
-        '\n6. Your docbase site is live at https://'+options.publishUsername+'.github.io/'+
+        '\n\n4. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
+        '\n5. Your docbase site is live at https://'+options.publishUsername+'.github.io/'+
         options.publishRepo;
       console.log(buildInfo);
     }
