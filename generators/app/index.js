@@ -252,7 +252,9 @@ module.exports = yeoman.generators.Base.extend({
         publishUsername: "",
         publishRepo: "",
         publishType: "local",
-        gruntTarget: ""
+        gruntTarget: "",
+        manual_override: false,
+        defaultVersion: ""
       };
       if (this.props.hostType === 'magic') {
         this.props.hostType = 'file';
@@ -335,6 +337,7 @@ module.exports = yeoman.generators.Base.extend({
           ]
         };
         var default_version = "";
+        var manual_override = false;
         var target_file = 'docbase-config.js';
         if(self.fs.exists(target_file)) {
           var configData = null;
@@ -347,15 +350,20 @@ module.exports = yeoman.generators.Base.extend({
           if(configData.hasOwnProperty('default_version')) {
             default_version = configData.default_version;
           }
+          if(configData.hasOwnProperty('manual_override')) {
+            manual_override = configData.manual_override;
+          }
         }
         return {
           "sampleVersions": sampleVersions,
-          "default_version": default_version
+          "default_version": default_version,
+          "manual_override": manual_override
         };
       }
 
       options.getVersions = JSON.stringify(getVersions().sampleVersions, null, 2);
       options.defaultVersion = getVersions().default_version;
+      options.manual_override = getVersions().manual_override;
 
       var templateData = options;
       files.forEach(function(file) {
