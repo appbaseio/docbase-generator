@@ -386,12 +386,11 @@ module.exports = yeoman.generators.Base.extend({
     } else if (options.publishType == 'github') {
       var buildInfo = '\n\n\nTo build with travis, ' +
         '\n\n1. Signup or login with travis at https://travis-ci.org/' +
-        '\n2. Add the https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git repository to travis by clicking "(+) add repository" button' +
-        '\n3. Turn the switch on to publish your repository' +
-        '\n4. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
+        '\n2. Go to https://travis-ci.org/profile/ and flick the switch on next to ' + options.publishUsername+'/'+options.publishRepo
+        '\n3. Push the current directory to https://github.com/' + options.publishUsername + '/' + options.publishRepo + '.git' +
         '\n\n--- Travis is now configured to forever publish your docbase site on gh-pages branch---' +
-        '\n\n5. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
-        '\n6. Your docbase site is live at https://'+options.publishUsername+'.github.io/'+
+        '\n\n4. You can see the travis builds at https://travis-ci.org/'+options.publishUsername+'/'+options.publishRepo+'/builds'+
+        '\n5. Your docbase site is live at https://'+options.publishUsername+'.github.io/'+
         options.publishRepo;
       console.log(buildInfo);
     }
