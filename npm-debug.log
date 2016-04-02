@@ -1,0 +1,114 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\farhan\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@3.7.1
+3 info using node@v5.9.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'D:\\Work\\xampp\\htdocs\\appbase-work\\generator-docbase',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\farhan\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle generator-docbase@0.0.41~prepublish: generator-docbase@0.0.41
+11 silly lifecycle generator-docbase@0.0.41~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ 'C:\\Users\\farhan\\AppData\\Roaming\\npm-cache\\generator-docbase\\0.0.41\\package.tgz',
+12 verbose tar pack   'D:\\Work\\xampp\\htdocs\\appbase-work\\generator-docbase' ]
+13 verbose tarball C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package.tgz
+14 verbose folder D:\Work\xampp\htdocs\appbase-work\generator-docbase
+15 verbose addLocalTarball adding from inside cache C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package.tgz
+16 verbose correctMkdir C:\Users\farhan\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+17 silly cache afterAdd generator-docbase@0.0.41
+18 verbose afterAdd C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package\package.json not in flight; writing
+19 verbose correctMkdir C:\Users\farhan\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+20 verbose afterAdd C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package\package.json written
+21 silly publish { name: 'generator-docbase',
+21 silly publish   version: '0.0.41',
+21 silly publish   description: 'Yeoman generator for docbase, a .md site generator',
+21 silly publish   license: 'MIT',
+21 silly publish   main: 'app/index.js',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/appbaseio/generator-docbase.git' },
+21 silly publish   author:
+21 silly publish    { name: 'Mateus Freira dos Santos',
+21 silly publish      email: 'mateus.freira@gmail.com',
+21 silly publish      url: 'https://github.com/appbaseio' },
+21 silly publish   scripts: { test: 'mocha' },
+21 silly publish   files: [ 'generators' ],
+21 silly publish   keywords: [ 'yeoman-generator, docbase, site generator, markdown publishing' ],
+21 silly publish   dependencies:
+21 silly publish    { chalk: '^1.0.0',
+21 silly publish      lodash: '^3.10.1',
+21 silly publish      'yeoman-generator': '^0.19.0',
+21 silly publish      yosay: '^1.0.2',
+21 silly publish      grunt: '~0.4.0' },
+21 silly publish   devDependencies:
+21 silly publish    { mocha: '*',
+21 silly publish      'grunt-contrib-connect': '^0.10.1',
+21 silly publish      'grunt-docbase': 'latest',
+21 silly publish      'grunt-gh-pages': '^0.10.0' },
+21 silly publish   readme: '# generator-docbase [![Build Status](https://secure.travis-ci.org/mateusfreira/generator-docbase.png?branch=master)](https://travis-ci.org/mateusfreira/generator-docbase)\r\n\r\n> [Yeoman](http://yeoman.io) docbase generator\r\n\r\n\r\n## Getting Started\r\n\r\nFisrt you need to install `node`, `npm`, `yo`, `grunt-cli`, `bower`\r\n\r\nThem you can install generator-docbase from npm, run:\r\n\r\n```bash\r\nnpm install -g generator-docbase\r\n```\r\n\r\nFinally, initiate the generator:\r\n\r\n```bash\r\nyo docbase\r\n```\r\nIf you\'d like to get to know more about the tools used for this generator please take a look to\r\n\r\n[Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete\r\n[Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).\r\n\r\n\r\n## License\r\n\r\nMIT\r\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '4473a9ed25d15741858051c635ddcdfa2ccbd4b8',
+21 silly publish   bugs: { url: 'https://github.com/appbaseio/generator-docbase/issues' },
+21 silly publish   homepage: 'https://github.com/appbaseio/generator-docbase#readme',
+21 silly publish   _id: 'generator-docbase@0.0.41',
+21 silly publish   _shasum: '18144a3de947aa3ee210e049a6d07cc3da4ba68f',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name generator-docbase
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry http://registry.npmjs.org/
+26 silly mapToRegistry uri http://registry.npmjs.org/generator-docbase
+27 verbose publish registryBase http://registry.npmjs.org/
+28 silly publish uploading C:\Users\farhan\AppData\Roaming\npm-cache\generator-docbase\0.0.41\package.tgz
+29 verbose request uri http://registry.npmjs.org/generator-docbase
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 3:34:52 PM
+32 verbose request using bearer token for auth
+33 verbose request id e8cd0c6d35f17937
+34 http request PUT http://registry.npmjs.org/generator-docbase
+35 http 403 http://registry.npmjs.org/generator-docbase
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '96',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Sat, 02 Apr 2016 10:04:55 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-sin6923-SIN',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1459591493.773259,VS0,VE1227' }
+37 verbose request invalidating C:\Users\farhan\AppData\Roaming\npm-cache\registry.npmjs.org\generator-docbase on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: "You cannot publish over the previously published version 0.0.41." : generator-docbase
+39 verbose stack     at makeError (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+39 verbose stack     at Request._callback (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+39 verbose stack     at Request.self.callback (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:199:22)
+39 verbose stack     at emitTwo (events.js:100:13)
+39 verbose stack     at Request.emit (events.js:185:7)
+39 verbose stack     at Request.<anonymous> (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:1036:10)
+39 verbose stack     at emitOne (events.js:95:20)
+39 verbose stack     at Request.emit (events.js:182:7)
+39 verbose stack     at IncomingMessage.<anonymous> (C:\Users\farhan\AppData\Roaming\npm\node_modules\npm\node_modules\request\request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid generator-docbase
+42 verbose cwd D:\Work\xampp\htdocs\appbase-work\generator-docbase
+43 error Windows_NT 6.3.9600
+44 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\farhan\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+45 error node v5.9.0
+46 error npm  v3.7.1
+47 error code E403
+48 error "You cannot publish over the previously published version 0.0.41." : generator-docbase
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]

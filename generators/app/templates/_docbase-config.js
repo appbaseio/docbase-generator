@@ -17,7 +17,7 @@ var docbaseConfig = {
   "indexHtml": "./html/main.html",
   "flatdocHtml": "./bower_components/docbase/html/flatdoc.html",
   "default_version": "<%= defaultVersion %>",
-  "manual_override": false,
+  "manual_override": <%= manual_override %>,
   "versions" : <%= getVersions %>,
   "publish": "<%= publishType %>"
 }
