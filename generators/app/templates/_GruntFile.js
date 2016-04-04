@@ -9,7 +9,7 @@ module.exports = function(grunt) {
 					baseUrl: "./",
 					operation: '<%= gruntOperation %>',
 					urlToAccess: "http://localhost:9001/",
-					assets: ['bower_components', 'styles', 'images', 'docbase-config.js'],
+					assets: ['./'],
 					checkLoadedSelector: '#navbar-collapse',
 					endDocument: "<script>$(function(){  $('.search-form').searchAppbase('./search-index.json', true); $(document).ready(function(){ setTimeout(function(){ $('#folder-navbar').megaMenu(); },200); }); });</script></html>"
 				}
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 					baseUrl: "./",
 					operation: '<%= gruntOperation %>',
 					urlToAccess: "http://localhost:9001/",
-					assets: ['example_docs', 'html', 'index.html', 'bower_components', 'styles', 'images', 'docbase-config.js', 'search-index.json' ],
+					assets: ['./'],
 					checkLoadedSelector : '#navbar-collapse'
 				}
 			}
