@@ -384,6 +384,14 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   install: function() {
+    this.bowerInstall = function install(cmpnt, options, cb) {
+      if(!options) {
+        options = [];
+      }
+      options.push("--allow-root");
+      return this.runInstall('bower', cmpnt, options, cb);
+    };
+
     if (options.publishType == 'local') {
       this.installDependencies({
         skipInstall: this.options['skip-install'],
