@@ -5,9 +5,9 @@
 
 ## Getting Started
 
-Fisrt you need to install `node`, `npm`, `yo`, `grunt-cli`, `bower`
+First you need to install `node`, `npm`, `yo`, `grunt-cli` and `bower`
 
-Them you can install generator-docbase from npm, run:
+Then you can install generator-docbase from npm. Run:
 
 ```bash
 npm install -g generator-docbase
@@ -18,7 +18,7 @@ Finally, initiate the generator:
 ```bash
 yo docbase
 ```
-If you'd like to get to know more about the tools used for this generator please take a look to
+If you'd like to know more about the tools used for this generator please take a look at
 
 [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete
 [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
