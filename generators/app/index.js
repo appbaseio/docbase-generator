@@ -234,6 +234,9 @@ module.exports = yeoman.generators.Base.extend({
         'template': 'images/_logo.png',
         'name': 'images/logo.png'
       }, {
+        'template': 'images/_PoweredByDocbase.png',
+        'name': 'images/PoweredByDocbase.png'
+      }, {
         'template': '_getGitMap.html',
         'name': 'getGitMap.html'
       }, {
@@ -379,6 +382,10 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('images/_logo.png'),
         this.destinationPath('images/logo.png')
+      );
+      this.fs.copy(
+        this.templatePath('images/_PoweredByDocbase.png'),
+        this.destinationPath('images/PoweredByDocbase.png')
       );
     }
   },

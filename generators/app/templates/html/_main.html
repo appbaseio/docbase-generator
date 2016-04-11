@@ -1,11 +1,10 @@
 <nav class="navbar navbar-default navbar-fixed-top" ng-include="'html/navbar.html'">
 </nav>
 <div class="container-fluid push">
-  <div class="row">
+  <div class="row docbase-main">
     <div class="col-xs-12 landing">
       <h1>Doc<b>base</b></h1>
     </div>
-
     <div class="col-xs-12 list">
       <a class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
         ng-repeat="folder in map[currentVersion]"
@@ -13,5 +12,11 @@
         ng-bind="folder.label">
       </a>
 		</div>
+  </div>
+   <div class="row powered-by">
+    <div class="col-xs-12">
+      <img src="./images/PoweredByDocbase.png"
+       class="img-responsive pull-right" alt="Powered by docbase" />
+    </div>
   </div>
 </div>
