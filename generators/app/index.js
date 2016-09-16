@@ -4,7 +4,6 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var _ = require('lodash');
 var options = {};
-var p = require('process');
 var f = require('fs');
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
