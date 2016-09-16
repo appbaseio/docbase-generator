@@ -1,4 +1,4 @@
-.landing, .button, .navbar-fixed-top {
+.landing, .button, .navbar-fixed-top, .menu a.active:after {
 	background-color: <%= primaryColor %>;
 }
 .index-container li a, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a, .content li > strong {
@@ -21,7 +21,7 @@ a:active, a:hover, .menu a:hover{
   color: <%= primaryColor %>;
   border-bottom-color: <%= primaryColor %>;
 }
-.menu a.active {
+.menu a.active, .menu a.active:visited, .menu a.active:hover {
 	color: <%= primaryColor %> !important;
 	font-weight: normal !important;
 }
