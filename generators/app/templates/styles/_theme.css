@@ -1,7 +1,7 @@
 .landing, .button, .navbar-fixed-top {
 	background-color: <%= primaryColor %>;
 }
-.index-container li a, .menu a, .menu a:visited, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a {
+.index-container li a, .navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover, a, ul.nav li.dropdown:hover>a, .content li > strong {
 	color: <%= primaryColor %>;
 }
 a:active, a:hover, .menu a:hover{
@@ -20,4 +20,8 @@ a:active, a:hover, .menu a:hover{
 .megamenu> li > ul > li.dropdown-header > a {
   color: <%= primaryColor %>;
   border-bottom-color: <%= primaryColor %>;
+}
+.menu a.active {
+	color: <%= primaryColor %> !important;
+	font-weight: normal !important;
 }
