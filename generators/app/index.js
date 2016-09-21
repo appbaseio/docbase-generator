@@ -224,9 +224,6 @@ module.exports = yeoman.generators.Base.extend({
         'template': '_search-index.json',
         'name': 'search-index.json'
       }, {
-        'template': 'styles/_style.css',
-        'name': 'styles/style.css'
-      }, {
         'template': 'styles/_theme.css',
         'name': 'styles/theme.css'
       }, {
